@@ -2,8 +2,6 @@ name: Create Release Tag for kustomize
 
 on:
   pull_request_target:
-    types:
-      - closed
     branches:
       - main
 
@@ -24,11 +22,12 @@ jobs:
           GIT_CONFIG_NAME: ${{ env.GH_SYSTEMSDT_USERNAME }}
           GIT_CONFIG_EMAIL: ${{ secrets.GH_SYSTEMSDT_EMAIL }}
       run: |
+        echo $GIT_CONFIG_EMAIL
+        echo $GH_SYSTEMSDT_USERNAME
         git config user.email $GIT_CONFIG_EMAIL
         git config user.name $GH_SYSTEMSDT_USERNAME
         git fetch --tags
-        echo $GIT_CONFIG_EMAIL
-        echo $GH_SYSTEMSDT_USERNAME
+        
 
     - name: Create Release Tag
       env:
