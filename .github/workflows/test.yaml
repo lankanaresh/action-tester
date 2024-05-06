@@ -19,7 +19,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GH_SYSTEMSDT_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_SYSTEMSDT_TOKEN }}
-          GIT_CONFIG_NAME: ${{ env.GH_SYSTEMSDT_USERNAME }}
+          GIT_CONFIG_NAME: ${{ vars.GH_SYSTEMSDT_USERNAME }}
           GIT_CONFIG_EMAIL: ${{ secrets.GH_SYSTEMSDT_EMAIL }}
       run: |
         echo "----------------------------"
