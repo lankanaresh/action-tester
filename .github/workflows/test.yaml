@@ -1,9 +1,9 @@
 name: Create Release Tag for kustomize
 
 on:
-  pull_request_target:
-    branches:
-      - main
+  issues:
+    types:
+      [opened, labeled, edited] # Runs at 8 AM and 8 PM daily
 
 jobs:
   create-release-tag:
