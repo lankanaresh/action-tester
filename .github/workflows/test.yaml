@@ -22,15 +22,19 @@ jobs:
           GIT_CONFIG_NAME: ${{ env.GH_SYSTEMSDT_USERNAME }}
           GIT_CONFIG_EMAIL: ${{ secrets.GH_SYSTEMSDT_EMAIL }}
       run: |
+        echo "----------------------------"
         echo $GIT_CONFIG_EMAIL
+        echo "----------------------------"
         echo $GIT_CONFIG_NAME
+        echo "----------------------------"
         git config user.email $GIT_CONFIG_EMAIL
         git config user.name $GIT_CONFIG_NAME
-        git fetch --tags
         
 
     - name: Create Release Tag
       env:
           GITHUB_TOKEN: ${{ secrets.GH_SYSTEMSDT_TOKEN }}
       run: |
+        echo "----------------------------"
         echo $GH_SYSTEMSDT_TOKEN
+        echo "----------------------------"
