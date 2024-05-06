@@ -1,0 +1,37 @@
+name: Create Release Tag for kustomize
+
+on:
+  pull_request_target:
+    types:
+      - closed
+    branches:
+      - main
+
+jobs:
+  create-release-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: main
+
+    - name: Set up Git with user info
+      env:
+          GITHUB_TOKEN: ${{ secrets.GH_SYSTEMSDT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_SYSTEMSDT_TOKEN }}
+          GIT_CONFIG_NAME: ${{ env.GH_SYSTEMSDT_USERNAME }}
+          GIT_CONFIG_EMAIL: ${{ secrets.GH_SYSTEMSDT_EMAIL }}
+      run: |
+        git config user.email $GIT_CONFIG_EMAIL
+        git config user.name $GH_SYSTEMSDT_USERNAME
+        git fetch --tags
+        echo $GIT_CONFIG_EMAIL
+        echo $GH_SYSTEMSDT_USERNAME
+
+    - name: Create Release Tag
+      env:
+          GITHUB_TOKEN: ${{ secrets.GH_SYSTEMSDT_TOKEN }}
+      run: |
+        echo $GH_SYSTEMSDT_TOKEN
