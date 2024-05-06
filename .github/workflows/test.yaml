@@ -23,9 +23,9 @@ jobs:
           GIT_CONFIG_EMAIL: ${{ secrets.GH_SYSTEMSDT_EMAIL }}
       run: |
         echo $GIT_CONFIG_EMAIL
-        echo $GH_SYSTEMSDT_USERNAME
+        echo $GIT_CONFIG_NAME
         git config user.email $GIT_CONFIG_EMAIL
-        git config user.name $GH_SYSTEMSDT_USERNAME
+        git config user.name $GIT_CONFIG_NAME
         git fetch --tags
         
 
